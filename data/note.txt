@@ -1,0 +1,45 @@
+Train import done successfully
+MEAN [0.5122, 0.175, 0.4368] STD [0.2288, 0.1285, 0.0738]
+DEVICE DICT {'AKGC417L': 0, 'LittC2SE': 1, 'Meditron': 2, 'Litt3200': 3}
+Device 0 32
+Device 1 23
+Device 2 64
+Device 3 11
+Getting filenames ...
+Exracting Individual Cycles
+722it [05:54,  2.03it/s]
+TRAIN DETAILS
+CLASSWISE SAMPLE COUNTS: [2878. 1474.  683.  436.]
+Device to ID {'AKGC417L': 0, 'LittC2SE': 1, 'Meditron': 2, 'Litt3200': 3}
+DEVICE ID 0 size 3436
+DEVICE ID 1 size 397
+DEVICE ID 2 size 1288
+DEVICE ID 3 size 350
+CLASSWISE PROBS [0.52604643 0.26942058 0.12484007 0.07969293]
+LEN AUDIO DATA 5471
+DEVICE DICT {'AKGC417L': 0, 'LittC2SE': 1, 'Meditron': 2, 'Litt3200': 3}
+Device 0 32
+Device 1 23
+Device 2 64
+Device 3 11
+Getting filenames ...
+Exracting Individual Cycles
+198it [01:40,  1.97it/s]
+TEST DETAILS
+CLASSWISE SAMPLE COUNTS: [775. 391. 206.  72.]
+Device to ID {'AKGC417L': 0, 'LittC2SE': 1, 'Meditron': 2, 'Litt3200': 3}
+DEVICE ID 0 size 910
+DEVICE ID 1 size 197
+DEVICE ID 2 size 180
+DEVICE ID 3 size 157
+CLASSWISE PROBS [0.5367036  0.27077562 0.14265928 0.0498615 ]
+LEN AUDIO DATA 1444
+
+首先更改batch size = 4; 用于调试；
+---------------------------- modified 1 ---------------------
+ File "train.py", line 119, in __init__
+    self.net = nn.DataParallel(self.net, device_ids=self.args.gpu_ids)
+
+parser.add_argument('--gpu_ids', default=[0,1], help='a list of gpus')
+ 更改成1个 gpu；
+parser.add_argument('--gpu_ids', default=[0], help='a list of gpus')
